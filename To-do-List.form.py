@@ -1,3 +1,9 @@
+#Atualização utilizando bibliotecas no python 
+
+from datetime import datetime
+
+
+
 #Projeto : lista de tarefas feito utilizando os laços while,if,else,elif e métodos de string e matriz.
 #vesão 1.0
 
@@ -27,6 +33,7 @@ while True:
         print(f"➡️  total: {len(minhas_tarefas)} tarefas") #quantidade de tarefas
 
     elif opcao == "A": # adiciona uma nova tarefa
+        data = datetime.now().strftime("%d/%m/%Y %H:%M")
         nova_tarefa = input("➡️  Digite a nova tarefa: ")
         nova_posicao = input("➡️  Você deseja escolher a posição da tarefa (S)/(N): ").upper() #escolhe a posição
         while nova_posicao != "S" and nova_posicao != "N": #verifica a entrada se é sim ou não para a nova posição
@@ -40,9 +47,9 @@ while True:
             posicao = int(input("➡️  Digite qual é a posição: "))
             while posicao < 1 or posicao > len(minhas_tarefas):
                 posicao = int(input(f"➡️  Posição inválida!! Digite entre 1 e {len(minhas_tarefas)}: ")) #Valida a posição
-            minhas_tarefas.insert(int(posicao) - 1 ,nova_tarefa)  # posição - 1 pois o usuário conta do 1 mas a lista começa no índice 0
+            minhas_tarefas.insert(int(posicao) - 1 ,f"{nova_tarefa} - {data}")  # posição - 1 pois o usuário conta do 1 mas a lista começa no índice 0
         else:
-            minhas_tarefas.append(nova_tarefa) #a tarefa é adicionada no final normalmente
+            minhas_tarefas.append(f"{nova_tarefa} - {data}") #a tarefa é adicionada no final normalmente
         print("✅ Nova tarefa adicionada com sucesso")
 
     elif opcao == "R": #remover ou concluir uma tarefa
